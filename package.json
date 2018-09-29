@@ -2,7 +2,7 @@
   "name": "niwatori-dice",
   "version": "1.0.0",
   "description": "The dice engine used in ccfolia",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "jest"
   },
