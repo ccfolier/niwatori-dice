@@ -1,0 +1,28 @@
+{
+  "name": "niwatori-dice",
+  "version": "1.0.0",
+  "description": "The dice engine used in ccfolia",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccfolia/niwatori-dice.git"
+  },
+  "keywords": [
+    "dice"
+  ],
+  "author": "ccfolia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ccfolia/niwatori-dice/issues"
+  },
+  "homepage": "https://github.com/ccfolia/niwatori-dice#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "crc-32": "^1.2.0"
+  }
+}
