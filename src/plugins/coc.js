@@ -6,21 +6,21 @@ module.exports = {
     fn(a) {
       const { rand, verbose } = this;
       const res = rand.next().value % 100 + 1
-      let text = ''
-      if (res <= 5) {
-        text = 'Critical!!'
-      }
+      let texts = []
       if (res <= a * 0.1) {
-        text = 'Special!'
+        texts.push('Special!')
+      }
+      if (res <= 5) {
+        texts.push('Critical!!')
       }
       if (res >= 96) {
-        text = 'Fumble!!'
+        texts.push('Fumble!!')
       }
       verbose.push(createVerbose(
         'dice',
         `ccb<=${a}`,
         res,
-        text
+        texts.join(',')
       ))
       return res <= a
     }
