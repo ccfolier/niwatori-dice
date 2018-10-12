@@ -24,7 +24,7 @@ function format(input, data) {
 
 function tokenize(input, operators) {
   const fomula = createFomulaRegExpString(operators)
-  const picker = new RegExp(`^${fomula}+`, 'g')
+  const picker = new RegExp(`^${fomula}+(\\s|$)`, 'g')
   const separator = new RegExp(fomula, 'g')
   const matches = input.match(picker)
   if (matches) {

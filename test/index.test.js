@@ -4,16 +4,17 @@ const roll = new NiwatoriDice()
 const TEST_SEED_1D100_60 = 1538254770938
 const TEST_SEED_1D100_1 = 1538480153094
 
-// let i = 0;
-// let now = Date.now();
+// let i = 0
+// let now = Date.now()
+// let ct = 0
 // while(i < 10000) {
 //   const r = roll('1d100', {}, now+i)
-//   if (r.result === 1) {
-//     console.log(now+i);
-//     break
+//   if (r.result >= 96) {
+//     ct++
 //   }
 //   i++
 // }
+// console.log(ct);
 
 test('1+2', () => {
   expect(roll('1+2', {}, TEST_SEED_1D100_60).result).toBe(3)
@@ -62,6 +63,12 @@ test('ccb<=60', () => {
 
 test('ccb<=50 TEXT', () => {
   const dice = roll('ccb<=50 TEXT', {}, TEST_SEED_1D100_60)
+  expect(dice.result).toBe(false)
+  expect(dice.verbose[0].result).toBe(60)
+})
+
+test('ccb<=50 DEX*5', () => {
+  const dice = roll('ccb<=50 DEX*5', {}, TEST_SEED_1D100_60)
   expect(dice.result).toBe(false)
   expect(dice.verbose[0].result).toBe(60)
 })
