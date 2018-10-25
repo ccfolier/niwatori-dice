@@ -8,10 +8,10 @@ module.exports = {
       const res = rand.next().value % 100 + 1
       let texts = []
       let result = ( res <= a )
-      if (res == 1) {
+      if (res === 1) {
         result = true
       }
-      if (res == 100) {
+      if (res === 100) {
         result = false
       }
       if (res <= a * 0.2) {
@@ -33,10 +33,10 @@ module.exports = {
       const res = rand.next().value % 100 + 1
       let texts = []
       let result = ( res <= a )
-      if (res == 1) {
+      if (res === 1) {
         result = true
       }
-      if (res == 100) {
+      if (res === 100) {
         result = false
       }
       if (res <= a * 0.2) {
