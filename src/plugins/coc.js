@@ -1,20 +1,21 @@
 const { createVerbose } = require('../index')
 
 module.exports = {
-  'ccb<=': {
+  'cc<=': {
     priority: -1,
     fn(a) {
       const { rand, verbose } = this;
       const res = rand.next().value % 100 + 1
       let texts = []
-      if (res <= a * 0.1) {
+      let result = ( res <= a )
+      if (res == 1) {
+        result = true
+      }
+      if (res == 100) {
+        result = false
+      }
+      if (res <= a * 0.2) {
         texts.push('Special!')
-      }
-      if (res <= 5) {
-        texts.push('Critical!!')
-      }
-      if (res >= 96) {
-        texts.push('Fumble!!')
       }
       verbose.push(createVerbose(
         'dice',
@@ -22,7 +23,40 @@ module.exports = {
         res,
         texts.join(',')
       ))
-      return res <= a
+      return result
+    }
+  },
+  'ccb<=': {
+    priority: -1,
+    fn(a) {
+      const { rand, verbose } = this;
+      const res = rand.next().value % 100 + 1
+      let texts = []
+      let result = ( res <= a )
+      if (res == 1) {
+        result = true
+      }
+      if (res == 100) {
+        result = false
+      }
+      if (res <= a * 0.2) {
+        texts.push('Special!')
+      }
+      if (res <= 5) {
+        texts.push('Critical!!')
+        result = true
+      }
+      if (res >= 96) {
+        texts.push('Fumble!!')
+        result = false
+      }
+      verbose.push(createVerbose(
+        'dice',
+        `ccb<=${a}`,
+        res,
+        texts.join(',')
+      ))
+      return result
     }
   },
   'res': {
