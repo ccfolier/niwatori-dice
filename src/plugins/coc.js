@@ -5,7 +5,8 @@ module.exports = {
     priority: -1,
     fn(a) {
       const { rand, verbose } = this;
-      const res = rand.next().value % 100 + 1
+      const diceType = 100;
+      const res = rand.next().value % diceType + 1
       let texts = []
       let result = ( res <= a )
       if (res === 1) {
@@ -18,7 +19,7 @@ module.exports = {
         texts.push('Special!')
       }
       verbose.push(createVerbose(
-        'dice',
+        `dice ${diceType}`,
         `ccb<=${a}`,
         res,
         texts.join(',')
@@ -30,7 +31,8 @@ module.exports = {
     priority: -1,
     fn(a) {
       const { rand, verbose } = this;
-      const res = rand.next().value % 100 + 1
+      const diceType = 100;
+      const res = rand.next().value % diceType + 1
       let texts = []
       let result = ( res <= a )
       if (res === 1) {
@@ -51,7 +53,7 @@ module.exports = {
         result = false
       }
       verbose.push(createVerbose(
-        'dice',
+        `dice ${diceType}`,
         `ccb<=${a}`,
         res,
         texts.join(',')

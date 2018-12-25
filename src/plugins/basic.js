@@ -35,7 +35,7 @@ module.exports = {
         res.push(rand.next().value % b + 1)
       }
       res.forEach((r, i) => verbose.push(createVerbose(
-        'dice',
+        `dice ${b}`,
         `${a}d${b}` + res.length > 1 ? `#${i+1}` : '',
         r
       )))
