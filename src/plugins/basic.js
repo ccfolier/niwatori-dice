@@ -4,30 +4,35 @@ module.exports = {
   '-': {
     priority: 0,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       return a - b
     }
   },
   '+': {
     priority: 0,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       return a + b
     }
   },
   '/': {
     priority: 10,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       return a / b
     }
   },
   '*': {
     priority: 10,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       return a * b
     }
   },
   'd': {
     priority: 100,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       const { rand, verbose } = this;
       const res = []
       let i = 0
@@ -48,12 +53,14 @@ module.exports = {
   '<=': {
     priority: -1,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       return a <= b
     }
   },
   '>=': {
     priority: -1,
     fn(a, b) {
+      if (isNaN(a) || isNaN(b)) return false
       return a >= b
     }
   }

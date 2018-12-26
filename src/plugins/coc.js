@@ -4,6 +4,7 @@ module.exports = {
   'cc<=': {
     priority: -1,
     fn(a) {
+      if (isNaN(a)) return false
       const { rand, verbose } = this;
       const res = rand.next().value % 100 + 1
       let texts = []
@@ -29,6 +30,7 @@ module.exports = {
   'ccb<=': {
     priority: -1,
     fn(a) {
+      if (isNaN(a)) return false
       const { rand, verbose } = this;
       const res = rand.next().value % 100 + 1
       let texts = []
@@ -62,6 +64,7 @@ module.exports = {
   'res': {
     priority: -1,
     fn(_a) {
+      if (isNaN(_a)) return false
       const { rand, verbose } = this;
       const a =  50 + _a * 5
       const b = rand.next().value % 100 + 1
