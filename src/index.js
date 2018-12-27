@@ -102,8 +102,8 @@ function calculate(tokens, operators, seed) {
       const argsLen = operators[token].argsLen || 2
       try {
         let output = operators[token].fn.apply({ rand, verbose }, stack.splice(argsLen * -1))
-        if (output === false) {
-          return Error('Invalid formula')
+        if (output === null) {
+          return TypeError('Invalid formula')
         }
         stack.push(output)
       } catch (err) {

@@ -4,7 +4,7 @@ module.exports = {
   'cc<=': {
     priority: -1,
     fn(a) {
-      if (isNaN(a)) return false
+      if (isNaN(a)) return null
       const { rand, verbose } = this;
       const diceType = 100;
       const res = rand.next().value % diceType + 1
@@ -31,7 +31,7 @@ module.exports = {
   'ccb<=': {
     priority: -1,
     fn(a) {
-      if (isNaN(a)) return false
+      if (isNaN(a)) return null
       const { rand, verbose } = this;
       const diceType = 100;
       const res = rand.next().value % diceType + 1
@@ -66,7 +66,7 @@ module.exports = {
   'res': {
     priority: -1,
     fn(_a) {
-      if (isNaN(_a)) return false
+      if (isNaN(_a)) return null
       const { rand, verbose } = this;
       const a =  50 + _a * 5
       const b = rand.next().value % 100 + 1
