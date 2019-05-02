@@ -84,27 +84,25 @@ describe('result thresholds', () => {
     })
   })
 
-  describe('as always success', () => {
+  describe('as always failure', () => {
     describe('dice_eyes:1', () => {
       let dice_eyes = TEST_SEED_1D100_1
 
       describe('target:0', () => {
         let target = 0
 
-        test('cc to be success', () => {
+        test('cc to be failure', () => {
           const dice = roll('cc<=' + target, {}, dice_eyes)
-          expect(dice.result).toBeTruthy()
+          expect(dice.result).toBeFalsy()
         })
 
-        test('ccb to be success', () => {
+        test('ccb to be failure', () => {
           const dice = roll('ccb<=' + target, {}, dice_eyes)
-          expect(dice.result).toBeTruthy()
+          expect(dice.result).toBeFalsy()
         })
       })
     })
-  })
 
-  describe('as always failure', () => {
     describe('dice_eyes:100', () => {
       let dice_eyes = TEST_SEED_1D100_100
 
@@ -175,10 +173,10 @@ describe('result thresholds', () => {
           expect(dice.verbose[0].text).toBe("")
         })
 
-        test('ccb to be actually failure, but critical-success', () => {
+        test('ccb to be failure, without critical-success', () => {
           const dice = roll('ccb<=' + target, {}, dice_eyes)
-          expect(dice.result).toBeTruthy()
-          expect(dice.verbose[0].text).toBe('Critical!!')
+          expect(dice.result).toBeFalsy()
+          expect(dice.verbose[0].text).toBe("")
         })
       })
 
@@ -303,12 +301,33 @@ describe('result thresholds', () => {
           expect(dice.verbose[0].text).toBe("")
         })
 
-        test('ccb to be actually success, but fumble(failure)', () => {
+        test('ccb to be success without fumble', () => {
           const dice = roll('ccb<=' + target, {}, dice_eyes)
-          expect(dice.result).toBeFalsy()
-          expect(dice.verbose[0].text).toBe('Fumble!!')
+          expect(dice.result).toBeTruthy()
+          expect(dice.verbose[0].text).toBe("")
         })
       })
     })
+
+    describe('dice_eyes:100', () => {
+      let dice_eyes = TEST_SEED_1D100_100
+
+      describe('target:100', () => {
+        let target = 100
+
+        test('cc to be actually success, but fumble(failure)', () => {
+          const dice = roll('cc<=' + target, {}, dice_eyes)
+          expect(dice.result).toBeFalsy()
+          expect(dice.verbose[0].text).toBe("Fumble!!")
+        })
+
+        test('ccb to be actually success, but fumble(failure)', () => {
+          const dice = roll('ccb<=' + target, {}, dice_eyes)
+          expect(dice.result).toBeFalsy()
+          expect(dice.verbose[0].text).toBe("Fumble!!")
+        })
+      })
+    })
+
   })
 })
