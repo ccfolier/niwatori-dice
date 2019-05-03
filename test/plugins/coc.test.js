@@ -250,6 +250,26 @@ describe('result thresholds', () => {
         })
       })
     })
+    
+    describe('dice_eyes:1', () => {
+      let dice_eyes = TEST_SEED_1D100_1
+
+      describe('target:5', () => {
+        let target = 5
+
+        test('cc to be success, with special, with critical-success', () => {
+          const dice = roll('cc<=' + target, {}, dice_eyes)
+          expect(dice.result).toBeTruthy()
+          expect(dice.verbose[0].text).toBe("Special!,Critical!!")
+        })
+
+        test('ccb to be success, with special, with critical-success', () => {
+          const dice = roll('ccb<=' + target, {}, dice_eyes)
+          expect(dice.result).toBeTruthy()
+          expect(dice.verbose[0].text).toBe('Special!,Critical!!')
+        })
+      })
+    })
   })
 
   describe('as fumble', () => {
