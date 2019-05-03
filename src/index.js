@@ -1,6 +1,6 @@
 const CRC32 = require('crc-32')
 
-function createFomulaRegExpString(operators) {
+function createFormulaRegExpString(operators) {
   const commons = ['\\(', '\\)', ',', '".+?"', "'.+?'", '\\d+']
   const keys = Object.keys(operators).map((key) => {
     return key.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
@@ -23,9 +23,9 @@ function format(input, data) {
 }
 
 function tokenize(input, operators) {
-  const fomula = createFomulaRegExpString(operators)
-  const picker = new RegExp(`^${fomula}+(\\s|$)`, 'g')
-  const separator = new RegExp(fomula, 'g')
+  const formula = createFormulaRegExpString(operators)
+  const picker = new RegExp(`^${formula}+(\\s|$)`, 'g')
+  const separator = new RegExp(formula, 'g')
   const matches = input.match(picker)
   if (matches) {
     return matches[0].match(separator).map((token) => {
