@@ -21,7 +21,7 @@ $ npm install niwatori-dice
 const { NiwatoriDice } = require('niwatori-dice')
 const roll = NiwatoriDice()
 
-roll('1d100') // => { result: 60, verbose: [{ type: 'dice', formula: '1d100', reesult: 60, text:'' }] }
+roll('1d100') // => { result: 60, verbose: [{ type: 'dice', formula: '1d100', result: 60, text:'' }] }
 ```
 
 ### NiwatoriDice(oparators)
