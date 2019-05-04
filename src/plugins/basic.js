@@ -41,7 +41,7 @@ module.exports = {
       }
       res.forEach((r, i) => verbose.push(createVerbose(
         `dice ${b}`,
-        `${a}d${b}` + res.length > 1 ? `#${i+1}` : '',
+        `${a}d${b}` + (res.length > 1 ? `#${i+1}` : ''),
         r
       )))
       const val = res.reduce((current, num) => {
