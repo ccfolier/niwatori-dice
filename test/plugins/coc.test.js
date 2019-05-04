@@ -219,7 +219,7 @@ describe('result thresholds', () => {
           test('cc to be success, with special, without critical-success', () => {
             const dice = roll('cc<=' + target, {}, dice_eyes)
             expect(dice.result).toBeTruthy()
-            expect(dice.verbose[0].text).toBe("Special!")
+            expect(dice.verbose[0].text).toBe('Special!')
           })
 
           test('ccb to be success, with critical-success', () => {
@@ -260,7 +260,7 @@ describe('result thresholds', () => {
         test('cc to be success, with special, with critical-success', () => {
           const dice = roll('cc<=' + target, {}, dice_eyes)
           expect(dice.result).toBeTruthy()
-          expect(dice.verbose[0].text).toBe("Special!,Critical!!")
+          expect(dice.verbose[0].text).toBe('Special!,Critical!!')
         })
 
         test('ccb to be success, with special, with critical-success', () => {
@@ -338,13 +338,13 @@ describe('result thresholds', () => {
         test('cc to be actually success, but fumble(failure)', () => {
           const dice = roll('cc<=' + target, {}, dice_eyes)
           expect(dice.result).toBeFalsy()
-          expect(dice.verbose[0].text).toBe("Fumble!!")
+          expect(dice.verbose[0].text).toBe('Fumble!!')
         })
 
         test('ccb to be actually success, but fumble(failure)', () => {
           const dice = roll('ccb<=' + target, {}, dice_eyes)
           expect(dice.result).toBeFalsy()
-          expect(dice.verbose[0].text).toBe("Fumble!!")
+          expect(dice.verbose[0].text).toBe('Fumble!!')
         })
       })
     })
