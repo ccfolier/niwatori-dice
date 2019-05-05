@@ -10,14 +10,15 @@ module.exports = {
       const res = rand.next().value % diceType + 1
       let texts = []
       let result = ( res <= a )
-      if (res === 1) {
-        result = true
+      if (res <= a * 0.2) {
+        texts.push('Special!')
+      }
+      if (res === 1 && result === true) {
+        texts.push('Critical!!')
       }
       if (res === 100) {
         result = false
-      }
-      if (res <= a * 0.2) {
-        texts.push('Special!')
+        texts.push('Fumble!!')
       }
       verbose.push(createVerbose(
         `dice ${diceType}`,
@@ -37,22 +38,17 @@ module.exports = {
       const res = rand.next().value % diceType + 1
       let texts = []
       let result = ( res <= a )
-      if (res === 1) {
-        result = true
-      }
       if (res === 100) {
         result = false
       }
       if (res <= a * 0.2) {
         texts.push('Special!')
       }
-      if (res <= 5) {
+      if (res <= 5 && result == true) {
         texts.push('Critical!!')
-        result = true
       }
-      if (res >= 96) {
+      if (res >= 96 && result == false) {
         texts.push('Fumble!!')
-        result = false
       }
       verbose.push(createVerbose(
         `dice ${diceType}`,
