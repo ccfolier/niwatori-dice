@@ -25,18 +25,25 @@ test('1+2*4', () => {
 })
 
 test('(1+2)*4', () => {
-  expect(roll('(1+2)*4', {}, TEST_SEED_1D100_60).result).toBe(12)
+  const dice = roll('(1+2)*4', {}, TEST_SEED_1D100_60)
+  expect(dice.result).toBe(12)
 })
 
 test('1d100', () => {
-  expect(roll('1d100', {}, TEST_SEED_1D100_60).result).toBe(60)
+  const dice = roll('1d100', {}, TEST_SEED_1D100_60)
+  expect(dice.result).toBe(60)
+  expect(dice.verbose[0].formula).toBe('1d100')
 })
 
 test('3d3', () => {
   const dice = roll('3d3', {}, TEST_SEED_1D100_60)
   expect(dice.verbose[0].result).toBe(2)
+  expect(dice.verbose[0].formula).toBe('3d3#1')
   expect(dice.verbose[1].result).toBe(1)
+  expect(dice.verbose[1].formula).toBe('3d3#2')
   expect(dice.verbose[2].result).toBe(1)
+  expect(dice.verbose[2].formula).toBe('3d3#3')
+
 })
 
 test('1d100<={DEX}*5', () => {
@@ -45,6 +52,7 @@ test('1d100<={DEX}*5', () => {
   }, TEST_SEED_1D100_60)
   expect(dice.result).toBe(false)
   expect(dice.verbose[0].result).toBe(60)
+  expect(dice.verbose[0].formula).toBe('1d100')
 })
 
 test('1d100<={dex}*5', () => {
@@ -53,6 +61,7 @@ test('1d100<={dex}*5', () => {
   }, TEST_SEED_1D100_60)
   expect(dice.result).toBe(false)
   expect(dice.verbose[0].result).toBe(60)
+  expect(dice.verbose[0].formula).toBe('1d100')
 })
 
 test('choice("a", "b", "c")', () => {
