@@ -12,39 +12,47 @@ const TEST_SEED_1D100_1 = 1538480153094
 
 describe('syntax', () => {
   let commands = ['cc', 'ccb', 'ＣＣ', 'ＣＣＢ']
+  let replacedCommands = ['cc', 'ccb', 'cc', 'ccb']
   let dice_eyes = TEST_SEED_1D100_15
 
   for(var i = 0, j = commands.length; i < j; i++){
     var command = commands[i]
+    var replacedCommand = replacedCommands[i]
 
     test(command, () => {
       const dice = roll(command, {}, dice_eyes)
       expect(dice.result).toBeUndefined()
+      expect(dice.verbose[0]).toBeUndefined()
     })
 
     test(command + '<=1', () => {
       const dice = roll(command + '<=1', {}, dice_eyes)
       expect(dice.result).toBeFalsy()
+      expect(dice.verbose[0].formula).toBe(replacedCommand + '<=1')
     })
 
     test(command + '<=1 TEXT', () => {
       const dice = roll(command + '<=1 TEXT', {}, dice_eyes)
       expect(dice.result).toBeFalsy()
+      expect(dice.verbose[0].formula).toBe(replacedCommand + '<=1')
     })
 
     test(command + '<=1 DEX*5', () => {
       const dice = roll(command + '<=1 DEX*5', {}, dice_eyes)
       expect(dice.result).toBeFalsy()
+      expect(dice.verbose[0].formula).toBe(replacedCommand + '<=1')
     })
 
     test('TEXT ' + command, () => {
       const dice = roll('TEXT ' + command, {}, dice_eyes)
       expect(dice.result).toBeUndefined()
+      expect(dice.verbose[0]).toBeUndefined()
     })
 
     test(command+'＜＝１', () => {
       const dice = roll(command + '＜＝１', {}, dice_eyes)
       expect(dice.result).toBeFalsy()
+      expect(dice.verbose[0].formula).toBe(replacedCommand + '<=1')
     })
   }
 })

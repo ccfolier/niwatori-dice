@@ -21,7 +21,7 @@ $ npm install niwatori-dice
 const { NiwatoriDice } = require('niwatori-dice')
 const roll = NiwatoriDice()
 
-roll('1d100') // => { result: 60, verbose: [{ type: 'dice', fomula: '1d100', reesult: 60, text:'' }] }
+roll('1d100') // => { result: 60, verbose: [{ type: 'dice', formula: '1d100', result: 60, text:'' }] }
 ```
 
 ### NiwatoriDice(oparators)
@@ -54,7 +54,7 @@ When fn runs it has references to `rand` and` verbose` through this.
 eg.
 ```js
 const { createVerbose } = require('niwatori-dice')
-// createVerbose(type, fomula, result, extendText)
+// createVerbose(type, formula, result, extendText)
 ...
 
 const roll = NiwatoriDice({
@@ -71,7 +71,7 @@ const roll = NiwatoriDice({
 })
 
 roll('fortune')
-// => { result: 5, verbose: [{ type: 'original', fomula: 'fortune', result: 5, text: 'You are 5 stars.' }] }
+// => { result: 5, verbose: [{ type: 'original', formula: 'fortune', result: 5, text: 'You are 5 stars.' }] }
 ```
 
 ##### oparators[].argLen (default: 2)
